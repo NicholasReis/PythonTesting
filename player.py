@@ -1,6 +1,7 @@
+import random
 class player:
     alive = True
-    attack = 0
+#    attack
     maxHealth = 100
     health = maxHealth
     maxMana = 50
@@ -25,13 +26,25 @@ class player:
         print("Dealt", self.attack, "damage!")
 
 class paladin(player):
-    defense = 15
-    attack = 10
-    lastDefense = defense
+    maxHealth = random.randint(15,30)
+    defense = random.randint(7, 12)
+    attack = random.randint(11, 20)
 
-    def resetTurn(self):
-        self.defense = self.lastDefense
     def shield(self):
         self.lastDefense = self.defense
         self.defense = self.defense + 10
-        attacks = -1
+    def returnStats(self):
+        print("Health: " + str(self.health)+"/"+str(self.maxHealth)+"\nAttack: "+str(self.attack)+"\nDefense: "+str(self.defense))
+
+###
+#class paladin(player):
+#    defense = 15
+#    attack = 10
+#    lastDefense = defense
+
+#    def resetTurn(self):
+#        self.defense = self.lastDefense
+#        self.lastDefense = self.defense
+#        self.defense = self.defense + 10
+#        attacks = -1
+###
