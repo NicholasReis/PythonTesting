@@ -1,5 +1,6 @@
 class player:
     alive = True
+    attack = 0
     maxHealth = 100
     health = maxHealth
     maxMana = 50
@@ -19,3 +20,18 @@ class player:
             self.alive = False
         else:
             self.health = self.health - pain
+
+    def attackOther(self):
+        print("Dealt", self.attack, "damage!")
+
+class paladin(player):
+    defense = 15
+    attack = 10
+    lastDefense = defense
+
+    def resetTurn(self):
+        self.defense = self.lastDefense
+    def shield(self):
+        self.lastDefense = self.defense
+        self.defense = self.defense + 10
+        attacks = -1
