@@ -12,15 +12,19 @@ class player:
     def isAlive(self):
         return self.alive
 
+    def getAttack(self):
+        return self.attack
+
+    def getDefense(self):
+        return self.defense
+        
     def heal(self, hp):
-        print("That hits the spot!")
         if self.health + hp > self.maxHealth:
             self.health = self.maxHealth
         else:
             self.health = self.health + hp
 
     def hurt(self, pain):
-        print("Ouch!")
         if self.health - pain < 0:
             self.health = 0
             self.alive = False
