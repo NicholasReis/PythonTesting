@@ -18,6 +18,9 @@ class livingThing:
     def isAlive(self):
         return self.alive
 
+    def getMaxHealth(self):
+        return self.maxHealth
+
     def getAttack(self):
         return self.attack
 
@@ -31,17 +34,17 @@ class livingThing:
             self.health = self.health + hp
 
     def hurt(self, pain):
-        strike = random.randint(0,20)
-        if(strike > self.defense):
-            if self.health - pain < 0:
-                self.health = 0
-                self.alive = False
-            else:
-                self.health = self.health - pain
+        if self.health - pain < 0:
+            self.health = 0
+            self.alive = False
+        else:
+            self.health = self.health - pain
+        print("I am at: "+str(self.health)+"/"+str(self.maxHealth))
 
     def attackOther(self, target):
         strike = random.randint(0,20)
-        if(strike > self.defense):
+        if(strike > target.getDefense()):
+            target.hurt(self.attack)
             print("Dealt", self.attack, "damage!")
 
     def getStats(self):
@@ -54,7 +57,7 @@ class hero(livingThing):
 
     job = ""
     race = {}
-    def __init__(self, ra = None, jo = None):
+    def __init__(self, ra = None, jo = None, tMaxHealth = None, tAttack = None, tDefense = None):
         alive = True
         j = jobs.jobs()
         r = races.races()
@@ -66,11 +69,20 @@ class hero(livingThing):
             self.job = jo
         else:
             self.job = j.getRandomJob(random.randint(0,1))
-            
-        self.maxHealth = 10+ j.jobHPBonus(self.job) + r.racialHPBonus(self.race)
+
+        if tMaxHealth is not None:
+            self.maxHealth = tMaxHealth + j.jobHPBonus(self.job) + r.racialHPBonus(self.race)
+        else:
+            self.maxHealth = 10 + j.jobHPBonus(self.job) + r.racialHPBonus(self.race)
         self.health = self.maxHealth
-        self.attack = 3 + j.jobAttackBonus(self.job) + r.racialAttackBonus(self.race)
-        self.defense = 3 + j.jobDefenseBonus(self.job) + r.racialDefenseBonus(self.race)
+        if tAttack is not None:
+            self.attack = tAttack + j.jobAttackBonus(self.job) + r.racialAttackBonus(self.race)
+        else:
+            self.attack = 3 + j.jobAttackBonus(self.job) + r.racialAttackBonus(self.race)
+        if tDefense is not None:
+            self.defense = tDefense + j.jobDefenseBonus(self.job) + r.racialDefenseBonus(self.race)
+        else:
+            self.defense = 3 + j.jobDefenseBonus(self.job) + r.racialDefenseBonus(self.race)
 
     def getRace(self):
         return self.race
@@ -102,8 +114,10 @@ class hero(livingThing):
         else:
             j = jobs.jobs()
             job = j.getRandomJob(random.randint(0,3))
-
-        return hero(race, job)
+        maxHealth = (parents[0].getMaxHealth() + parents[1].getMaxHealth())/2
+        attack = (parents[0].getAttack() + parents[1].getAttack())/2
+        defense = (parents[0].getDefense() + parents[1].getDefense())/2
+        return hero(race, job, maxHealth, attack, defense)
 
 
     def getStats(self):

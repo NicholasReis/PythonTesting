@@ -1,22 +1,35 @@
 import livingThing
-import enemy
+import random
 
 class logic:
-    def playerTurn(self, assets):
-        for lifeForm in assets:
-            if issubclass(type(lifeForm), livingThing.player):
-                print("This is a paladin")
-            elif issubclass(type(lifeForm), enemy.enemy):
-                print("This is an enemy ", type(lifeForm))
+    h = livingThing.hero()
+    characters = [livingThing.hero(), livingThing.hero()]
+
+    def evaluations(self):
+        for people in self.characters:
+            people.getStats()
+            print("\n")
+
+
+    def liveCheck(self):
+        stop = len(self.characters)
+        for lifeForm in self.characters:
+            if not lifeForm.isAlive():
+                print(str(lifeForm), " is dead!")
+                stop = stop -1
+                self.characters.remove(lifeForm)
             else:
-                print("This is", type(lifeForm))
+                print("Alive!")
+        if stop <= 1:
+            return True
+        else:
+            return False
 
-
-
-
-    def liveCheck(self, assets):
-        for character in assets:
-            if not character.isAlive():
-                print(str(character), " is dead!")
-                assets.remove(character)
-        return assets
+    def playerTurn(self):
+        for lifeForm in range(0, len(self.characters)-1):
+            if self.characters[lifeForm].isAlive():
+                target = random.randint(0, len(self.characters)-1)
+                if target == lifeForm:
+                    self.characters[lifeForm].heal(self.characters[lifeForm].getMaxHealth()/5)
+                else:
+                    self.characters[lifeForm].attackOther(self.characters[target])
