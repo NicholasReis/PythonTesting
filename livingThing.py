@@ -65,9 +65,8 @@ class hero(livingThing):
         if jo is not None:
             self.job = jo
         else:
-
             self.job = j.getRandomJob(random.randint(0,1))
-        print(self.job)
+            
         self.maxHealth = 10+ j.jobHPBonus(self.job) + r.racialHPBonus(self.race)
         self.health = self.maxHealth
         self.attack = 3 + j.jobAttackBonus(self.job) + r.racialAttackBonus(self.race)
