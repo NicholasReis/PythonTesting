@@ -95,11 +95,11 @@ class hero(livingThing):
         j = jobs.jobs()
 
 
-    def createChild(self, parents):
-        p1Job = parents[0].getJob()
-        p2Job = parents[1].getJob()
-        p1Race = parents[0].getRace()
-        p2Race = parents[1].getRace()
+    def createChild(self, parent):
+        p1Job = self.getJob()
+        p2Job = parent.getJob()
+        p1Race = self.getRace()
+        p2Race = parent.getRace()
         #Initializes and creates inherited race
         race = {}
         race["Human"] = 100*(p1Race["Human"]/200 + p2Race["Human"]/200)
@@ -114,9 +114,9 @@ class hero(livingThing):
         else:
             j = jobs.jobs()
             job = j.getRandomJob(random.randint(0,3))
-        maxHealth = (parents[0].getMaxHealth() + parents[1].getMaxHealth())/2
-        attack = (parents[0].getAttack() + parents[1].getAttack())/2
-        defense = (parents[0].getDefense() + parents[1].getDefense())/2
+        maxHealth = (self.getMaxHealth() + parent.getMaxHealth())/2
+        attack = (self.getAttack() + parent.getAttack())/2
+        defense = (self.getDefense() + parent.getDefense())/2
         return hero(race, job, maxHealth, attack, defense)
 
 

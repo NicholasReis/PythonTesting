@@ -10,7 +10,8 @@ while round < 30 and not thought.liveCheck():
     thought.playerTurn()
     thought.evaluations()
     round = round +1
-
+    if round == 15:
+        thought.repopulate()
 # for p in range(0, 1):
 #     tempList = (characters[p], characters[p+1])
 #     characters.append(h.createChild(tempList))
