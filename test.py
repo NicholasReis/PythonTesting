@@ -2,13 +2,12 @@ import livingThing
 import logic
 
 
-lt = livingThing.livingThing()
+h = livingThing.hero()
 thought = logic.logic()
-characters = [livingThing.livingThing(), livingThing.livingThing(), livingThing.livingThing(), livingThing.livingThing(), livingThing.livingThing()]
-print(characters[0].getRace())
-for p in range(0, 5):
+characters = [livingThing.hero(), livingThing.hero()]
+for p in range(0, 1):
     tempList = (characters[p], characters[p+1])
-    characters.append(lt.createChild(tempList))
+    characters.append(h.createChild(tempList))
 
 for people in characters:
     print(people.getRace())

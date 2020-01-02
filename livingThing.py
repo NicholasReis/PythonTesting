@@ -4,23 +4,7 @@ import jobs
 
 class livingThing:
     alive = True
-    def __init__(self, ra = None, cl = None):
-        alive = True
-        if ra is not None:
-            self.race = ra
-        else:
-            r = races.races()
-            self.race = r.getRandomRace(random.randint(0,2))
-        if cl is not None:
-            self.job = cl
-        else:
-            c = jobs.jobs()
-            self.job = c.getRandomJob(random.randint(0,1))
-    def getRace(self):
-        return self.race
 
-    def getJob(self):
-        return self.job
      #job = classes.getRandomClass()
     attack = 0
     defense = 0
@@ -58,6 +42,28 @@ class livingThing:
     def returnStats(self):
         print("Alive: "+str(self.alive)+"\nHealth: " + str(self.health)+"/"+str(self.maxHealth)+"\nAttack: "+str(self.attack)+"\nDefense: "+str(self.defense))
 
+
+
+
+class hero(livingThing):
+    def __init__(self, ra = None, cl = None):
+        alive = True
+        if ra is not None:
+            self.race = ra
+        else:
+            r = races.races()
+            self.race = r.getRandomRace(random.randint(0,2))
+        if cl is not None:
+            self.job = cl
+        else:
+            c = jobs.jobs()
+            self.job = c.getRandomJob(random.randint(0,1))
+    def getRace(self):
+        return self.race
+
+    def getJob(self):
+        return self.job
+
     def createChild(self, parents):
         p1Job = parents[0].getJob()
         p2Job = parents[1].getJob()
@@ -78,8 +84,7 @@ class livingThing:
             j = jobs.jobs()
             job = j.getRandomJob(random.randint(0,3))
 
-        return livingThing(race, job)
-
+        return hero(race, job)
 #    def resetTurn(self):
 #        self.defense = self.lastDefense
 #        self.lastDefense = self.defense
