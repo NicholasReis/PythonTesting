@@ -1,14 +1,18 @@
-import player
+import livingThing
 import enemy
+
 class logic:
     def playerTurn(self, assets):
         for lifeForm in assets:
-            if issubclass(type(lifeForm), player.player):
+            if issubclass(type(lifeForm), livingThing.player):
                 print("This is a paladin")
             elif issubclass(type(lifeForm), enemy.enemy):
                 print("This is an enemy ", type(lifeForm))
             else:
                 print("This is", type(lifeForm))
+
+
+
 
     def liveCheck(self, assets):
         for character in assets:
