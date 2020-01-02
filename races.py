@@ -21,11 +21,11 @@ class races:
             race["Orc"]= 100
             return race
 
-        def racialHPBonus(self, rDict):
-            return ((rDict["Human"]/100)*1.3)+((rDict["Elf"]/100)*0.6)+((rDict["Orc"]/100)*1.8)
+    def racialHPBonus(self, rDict):
+        return ((rDict["Human"]/100)*1.3)+((rDict["Elf"]/100)*0.6)+((rDict["Orc"]/100)*1.8)
 
-        def racialAttackBonus(self, rDict):
-            return ((rDict["Human"]/100)*1)+((rDict["Elf"]/100)*0.7)+((rDict["Orc"]/100)*1.3)
+    def racialAttackBonus(self, rDict):
+        return ((rDict["Human"]/100)*1)+((rDict["Elf"]/100)*0.7)+((rDict["Orc"]/100)*1.3)
 
-        def racialDefenseBonus(self, rDict):
-            return ((rDict["Human"]/100)*1.2)+((rDict["Elf"]/100)*0.4)+((rDict["Orc"]/100)*1.6)
+    def racialDefenseBonus(self, rDict):
+        return ((rDict["Human"]/100)*1.2)+((rDict["Elf"]/100)*0.4)+((rDict["Orc"]/100)*1.6)
