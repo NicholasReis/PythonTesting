@@ -1,5 +1,8 @@
 import random
 class jobs:
+    def listOfJobs(self):
+        return ["Paladin", "Wizard", "None"]
+
     def getRandomJob(self, jobNum):
         if jobNum == 0:
             return "Paladin"

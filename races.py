@@ -1,6 +1,9 @@
 import random
 
 class races:
+    def listOfRaces(self):
+        return ["Human", "Elf", "Orc"]
+        
     def getRandomRace(self, raceNum):
         if raceNum == 0:
             race = {}

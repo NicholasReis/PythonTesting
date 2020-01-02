@@ -5,7 +5,6 @@ import jobs
 class livingThing:
     r = races.races()
     j = jobs.jobs()
-
     alive = True
     attack = 0
     defense = 0
@@ -14,6 +13,8 @@ class livingThing:
     maxMana = 0
     mana = 0
 
+    def getId(self):
+        return self.id
 
     def isAlive(self):
         return self.alive
