@@ -40,6 +40,7 @@ class logic:
             if target == people:
                 continue
             else:
-                tempPop.append(self.characters[people].createChild(self.characters[target]))
+                if target.getGender() != people.getGender():
+                    tempPop.append(self.characters[people].createChild(self.characters[target]))
         for newGuys in tempPop:
             self.characters.append(newGuys)

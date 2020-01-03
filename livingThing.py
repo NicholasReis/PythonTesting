@@ -6,6 +6,7 @@ class livingThing:
     r = races.races()
     j = jobs.jobs()
     alive = True
+    gender = 0 #0 = Male, #1 = Female
     attack = 0
     defense = 0
     maxHealth = 0
@@ -13,8 +14,8 @@ class livingThing:
     maxMana = 0
     mana = 0
 
-    def getId(self):
-        return self.id
+    def getGender(self):
+        return self.gender;
 
     def isAlive(self):
         return self.alive
@@ -84,7 +85,8 @@ class hero(livingThing):
             self.defense = tDefense + j.jobDefenseBonus(self.job) + r.racialDefenseBonus(self.race)
         else:
             self.defense = 3 + j.jobDefenseBonus(self.job) + r.racialDefenseBonus(self.race)
-
+        self.gender = random.randint(0,1)
+        
     def getRace(self):
         return self.race
 
