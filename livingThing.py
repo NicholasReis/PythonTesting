@@ -83,6 +83,8 @@ class hero(livingThing):
             self.defense = tDefense + j.jobDefenseBonus(self.job) + r.racialDefenseBonus(self.race)
         else:
             self.defense = 3 + j.jobDefenseBonus(self.job) + r.racialDefenseBonus(self.race)
+        if self.defense > 19:
+            self.defense = 19
         self.gender = random.randint(0,1)
 
     def getRace(self):

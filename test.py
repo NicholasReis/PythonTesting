@@ -10,7 +10,7 @@ while round < maxRounds and not thought.liveCheck():
     print("Fighters: ", str(thought.numOfFighters()))
     thought.playerTurn()
     round = round +1
-    if round%10 == 0:
+    if round%10 == 0 and round != maxRounds:
         thought.repopulate()
         thought.evaluations()
 
