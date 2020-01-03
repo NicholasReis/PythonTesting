@@ -3,7 +3,11 @@ import random
 
 class logic:
     h = livingThing.hero()
-    characters = [livingThing.hero(), livingThing.hero(), livingThing.hero(), livingThing.hero(), livingThing.hero(), livingThing.hero(), livingThing.hero(), livingThing.hero(), livingThing.hero(), livingThing.hero(), livingThing.hero(), livingThing.hero(), livingThing.hero(), livingThing.hero()]
+    characters = []
+    maxHeroes = 15
+    random.randint(2, maxHeroes)
+    for i in range(0, maxHeroes):
+        characters.append(livingThing.hero())
 
     def numOfFighters(self):
         return len(self.characters)
