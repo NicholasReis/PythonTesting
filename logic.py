@@ -3,7 +3,10 @@ import random
 
 class logic:
     h = livingThing.hero()
-    characters = [livingThing.hero(), livingThing.hero(), livingThing.hero(), livingThing.hero(), livingThing.hero(), livingThing.hero(), livingThing.hero()]
+    characters = [livingThing.hero(), livingThing.hero(), livingThing.hero(), livingThing.hero(), livingThing.hero(), livingThing.hero(), livingThing.hero(), livingThing.hero(), livingThing.hero(), livingThing.hero(), livingThing.hero(), livingThing.hero(), livingThing.hero(), livingThing.hero()]
+
+    def numOfFighters(self):
+        return len(self.characters)
 
     def evaluations(self):
         for people in self.characters:
@@ -15,11 +18,8 @@ class logic:
         stop = len(self.characters)
         for lifeForm in self.characters:
             if not lifeForm.isAlive():
-                print(str(lifeForm), " is dead!")
                 stop = stop -1
                 self.characters.remove(lifeForm)
-            else:
-                print("Alive!")
         if stop <= 1:
             return True
         else:
@@ -40,7 +40,8 @@ class logic:
             if target == people:
                 continue
             else:
-                if target.getGender() != people.getGender():
+                if self.characters[target].getGender() != self.characters[people].getGender():
                     tempPop.append(self.characters[people].createChild(self.characters[target]))
+
         for newGuys in tempPop:
             self.characters.append(newGuys)

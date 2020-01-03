@@ -41,13 +41,11 @@ class livingThing:
             self.alive = False
         else:
             self.health = self.health - pain
-        print("I am at: "+str(self.health)+"/"+str(self.maxHealth))
 
     def attackOther(self, target):
         strike = random.randint(0,20)
         if(strike > target.getDefense()):
             target.hurt(self.attack)
-            print("Dealt", self.attack, "damage!")
 
     def getStats(self):
         print("Alive: "+str(self.alive)+"\nHealth: " + str(self.health)+"/"+str(self.maxHealth)+"\nAttack: "+str(self.attack)+"\nDefense: "+str(self.defense))
@@ -86,7 +84,7 @@ class hero(livingThing):
         else:
             self.defense = 3 + j.jobDefenseBonus(self.job) + r.racialDefenseBonus(self.race)
         self.gender = random.randint(0,1)
-        
+
     def getRace(self):
         return self.race
 
@@ -124,4 +122,4 @@ class hero(livingThing):
 
 
     def getStats(self):
-        print("Alive: "+str(self.alive)+"\nRace: "+str(self.race)+"\nJob: "+str(self.job)+"\nHealth: " + str(self.health)+"/"+str(self.maxHealth)+"\nAttack: "+str(self.attack)+"\nDefense: "+str(self.defense))
+        print("Alive: "+str(self.alive)+"\nRace: "+str(self.race)+"\nGender: "+str(self.gender)+"\nJob: "+str(self.job)+"\nHealth: " + str(self.health)+"/"+str(self.maxHealth)+"\nAttack: "+str(self.attack)+"\nDefense: "+str(self.defense))
